@@ -30,7 +30,7 @@
 
 #include <pthread.h>
 
-#define	LIBMICRO_VERSION	"0.4.1"
+#define	LIBMICRO_VERSION	"0.4.3"
 
 #define	STRSIZE			1024
 
@@ -138,8 +138,8 @@ int	benchmark_init();
 int	benchmark_fini();
 int	benchmark_initrun();
 int	benchmark_finirun();
-int	benchmark_initworker();
-int	benchmark_finiworker();
+int	benchmark_initworker(void *tsd);
+int	benchmark_finiworker(void *tsd);
 int	benchmark_initbatch(void *tsd);
 int	benchmark_finibatch(void *tsd);
 int	benchmark_optswitch(int opt, char *optarg);
@@ -188,8 +188,8 @@ void 		*gettsd(int p, int t);
 long long 	getusecs();
 long long 	getnsecs();
 int 		setfdlimit(int limit);
-long long 	sizetoll();
-int 		sizetoint();
+long long 	sizetoll(const char *);
+int 		sizetoint(const char *);
 int		fit_line(double *, double *, int, double *, double *);
 long long	get_nsecs_resolution();
 
